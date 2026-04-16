@@ -3,7 +3,7 @@
 A pan-African e-commerce backend connecting merchants across Nigeria, Ghana, Kenya, and South Africa with customers anywhere on the continent.
 
 ## Live API
-https://your-render-url.onrender.com
+https://panafrica-store.onrender.com
 
 ## Tech Stack
 - **Runtime**: Node.js
