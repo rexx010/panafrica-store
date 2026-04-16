@@ -111,11 +111,19 @@ const markRatesAsStale = async (baseCurrency) => {
 };
 
 const startRateRefreshJob = async () => {
-    await fetchAndCacheRates();
+    try {
+        await fetchAndCacheRates();
+    } catch (error) {
+        logger.error('Initial rate fetch failed:', error.message);
+    }
     const THIRTY_MINUTES = 30 * 60 * 1000;
     setInterval(async () => {
-        logger.info('Running scheduled rate refresh')
-        await fetchAndCacheRates();
+        try {
+            logger.info('Running scheduled rate refresh')
+            await fetchAndCacheRates();
+        } catch (error) {
+            logger.error('Scheduled rate refresh failed:', error.message);
+        }
     }, THIRTY_MINUTES);
     logger.info('Rate refresh job started — runs every 30 minutes');
 };
