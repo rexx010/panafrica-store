@@ -27,7 +27,9 @@ const getProductController = async (req, res) => {
 
 const createProductController = async(req, res) => {
     try {
+        console.log('CREATE PRODUCT HIT', req.user);
         const { id: merchantId, baseCurrency } = req.user;
+        console.log('merchantId:', merchantId, 'baseCurrency:', baseCurrency);
         const product = await createNewProduct(merchantId, baseCurrency, req.body);
         logger.info(`Product created: ${product.name} by merchant: ${merchantId}`);
         return sendCreated(res, product, 'Product created successfully');
