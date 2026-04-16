@@ -1,0 +1,42 @@
+const sendSuccess = (res, data, message = 'Success', statusCode = 200) => {
+    return res.status(statusCode).json({
+        success: true,
+        message,
+        data,
+    })
+};
+
+const sendCreated = (res, data, message = 'Created successfully') => {
+    return sendSuccess(res, data, message, 201);
+};
+
+const sendError = (res, message = 'Something went wrong', statusCode = 400, field = null) => {
+    const response = {
+        success: false,
+        error: true,
+        message,
+    }
+    if (field) response.field = field;
+    return res.status(statusCode).json(response);
+};
+
+const sendUnauthorized = (res, message = 'Unauthorized') => {
+    return sendError(res, message, 401);
+};
+
+const sendForbidden = (res, message = 'Forbidden') => {
+    return sendError(res, message, 403);
+};
+
+const sendNotFound = (res, message = 'Resource not Found') => {
+    return sendError(res, message, 404);
+};
+
+module.exports = {
+sendSuccess,
+  sendCreated,
+  sendError,
+  sendUnauthorized,
+  sendForbidden,
+  sendNotFound,
+}
