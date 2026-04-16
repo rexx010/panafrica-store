@@ -14,6 +14,8 @@ require('./config/db');
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 app.use(helmet());
 
 app.use(cors());
@@ -31,7 +33,7 @@ app.get('/health', (req, res) => {
 app.use('/auth', authRoute);
 app.use('/rates', ratesRoutes);
 app.use('/products', productsRoutes);
-app.use('/Cart', cartRoutes);
+app.use('/cart', cartRoutes);
 app.use('/', ordersRoutes);
 
 
