@@ -6,7 +6,7 @@ A pan-African e-commerce backend connecting merchants across Nigeria, Ghana, Ken
 https://panafrica-store.onrender.com
 
 ## Postman Documentation Link
-https://agent-of-christ.postman.co/workspace/agent-of-christ-Workspace~a4574e34-9bc8-4c41-86ad-c664ee3ab814/collection/47880336-4677e4eb-a5af-4d41-9235-b4dda8d08c85?action=share&creator=47880336
+https://documenter.getpostman.com/view/47880336/2sBXqDs3bk
 
 ## Loom video walk through
 https://www.loom.com/share/2061719f9de3434daea46143ea90f0e2
