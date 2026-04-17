@@ -52,10 +52,12 @@ process.on('uncaughtException', (error) => {
     console.error(error.stack);
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`🚀 Server running on port ${PORT}`);
+    });
+}
 
 const { startRateRefreshJob } = require('./modules/rates/rates.service');
 startRateRefreshJob().catch((err) => {
