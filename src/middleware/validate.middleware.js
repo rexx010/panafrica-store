@@ -3,7 +3,7 @@ const validate =  (schema) => {
         const result = schema.safeParse(req.body);
 
         if (!result.success) {
-            const errors = result.error.issues.map((issue) => ({
+            const errors = result.error.errors.map((issue) => ({
                 field: issue.path.join('.') || null,
                 message: issue.message,
             }))
