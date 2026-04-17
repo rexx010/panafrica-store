@@ -26,15 +26,19 @@ const getProductController = async (req, res) => {
 };
 
 const createProductController = async(req, res) => {
+    console.log('=== CREATE PRODUCT HIT ===');
+    console.log('user:', JSON.stringify(req.user));
+    console.log('body:', JSON.stringify(req.body));
     try {
-        console.log('CREATE PRODUCT HIT', req.user);
         const { id: merchantId, baseCurrency } = req.user;
-        console.log('merchantId:', merchantId, 'baseCurrency:', baseCurrency);
+        console.log('merchantId:', merchantId, '| baseCurrency:', baseCurrency);
         const product = await createNewProduct(merchantId, baseCurrency, req.body);
         logger.info(`Product created: ${product.name} by merchant: ${merchantId}`);
         return sendCreated(res, product, 'Product created successfully');
     } catch (error) {
-        logger.error('Create product failed', error);
+        console.error('=== CREATE PRODUCT ERROR ===');
+        console.error('message:', error.message);
+        console.error('stack:', error.stack);
         return sendError(res, error.message, error.statusCode || 500);
     }
 };
