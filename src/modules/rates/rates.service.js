@@ -38,10 +38,8 @@ const fetchAndCacheRates = async () => {
 };
 
 const getRate = async (baseCurrency) => {
-//   console.log('1. getRate called with baseCurrency:', baseCurrency);
 
   const fetchedRate = await getLatestRate(baseCurrency);
-//   console.log('2. fetchedRate from DB:', fetchedRate);
 
   if (!fetchedRate) {
     const error = new Error('Exchange rates unavailable. Please try again later.');
@@ -50,8 +48,6 @@ const getRate = async (baseCurrency) => {
   }
 
   const cachedRate = new RateCache(fetchedRate);
-//   console.log('3. cachedRate created:', cachedRate);
-//   console.log('4. isExpired:', cachedRate.isExpired());
 
   if (cachedRate.isExpired()) {
     try {
